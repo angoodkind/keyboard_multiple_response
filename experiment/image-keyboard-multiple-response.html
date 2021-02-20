@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="jspsych-6/jspsych.js"></script>
+  <script src="jspsych-6/plugins/jspsych-image-keyboard-multiple-response.js"></script>
+  <link rel="stylesheet" href="jspsych-6/css/jspsych.css"></link>
+  <title>FreeText Demo</title>
+  <style>
+    img {
+      width: 300px;
+    }
+  </style>
+</head>
+<body></body>
+<script>
+    var subj_input_trial = {
+        type: 'image-keyboard-multiple-response',
+        stimulus: 'img/green-blue-bus.png',
+        choices: jsPsych.ALL_KEYS,
+        prompt: '<p>Describe the highlighted object.</p>',
+        response_ends_trial: false
+    }
+
+    var woz_input_trial = {
+        type: 'image-keyboard-multiple-response',
+        stimulus: 'img/pink-blue-bus.png',
+        prompt: '<p>The pink coach is highlighted.</p>',
+        response_ends_trial: false
+    }
+
+    var timeline = [];
+    timeline.push(subj_input_trial);
+    timeline.push(woz_input_trial);
+
+    jsPsych.init({
+        timeline: timeline,
+        on_finish: function() {
+            jsPsych.data.displayData();
+        }
+    });
+</script>
